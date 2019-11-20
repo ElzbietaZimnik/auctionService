@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8"></meta>
+    <title>Formularz do rejestracji</title>
+</head>
+<body>
+<div id="registerForm">
+<h1>Formularz do rejestracji</h1>
+<!--/*@thymesVar id="address" type=""*/-->
+<form action="#" method="post" th:action="@{/register}" th:object="${user}">
+
+    <input th:field="*{userAccountName}" placeholder="Nazwa konta użytkownika" /><br />
+    <input th:field="*{city}" placeholder="Miasto" /><br />
+    <input th:field="*{region}" placeholder="Województwo" /><br />
+
+
+    <input th:field="*{address.street}" placeholder="Ulica" /><br />
+    <input th:field="*{address.number}" placeholder="Numer domu" /><br />
+    <input th:field="*{address.cityCode}" placeholder="Kod pocztowy" /><br />
+
+    <p th:errors="*{loginByEmail}">Email errors</p>
+    <input th:field="*{loginByEmail}" type="email" placeholder="e-mail" /><br />
+    <p th:errors="*{password}">Password errors</p>
+    <input th:field="*{password}" type="password" placeholder="Password" /><br />
+
+
+    <input type="submit" value="Zarejestruj" />
+
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <title>List Cars</title>
+</head>
+<body>
+
+<h3>Lista użytkowników</h3>
+
+<tr th:each="user:${user}"><br>
+    <td th:text="${user.id}">ID</td>
+    <td th:text="${user.userAccountName}">Nazwa użytkownika</td>
+    <td th:text="${user.loginByEmail}">Login</td>
+    <td th:text="${user.city}">Miasto</td>
+    <td th:text="${user.region}">Region</td>
+</tr>
+
+</body>
+</html>
