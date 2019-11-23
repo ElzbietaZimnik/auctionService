@@ -23,3 +23,12 @@
 		margin-top: 1%;
 	}
 
+	#loginForm
+	{
+		background-color: rgba(32, 65, 116, 0.41);
+		font-family: Tahoma, sans-serif;
+		text-align: center;
+		padding: 20px;
+		margin-top: 1%;
+	}
+

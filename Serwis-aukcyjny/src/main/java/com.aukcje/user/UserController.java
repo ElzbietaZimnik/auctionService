@@ -54,10 +54,10 @@ public class UserController {
     public String registryNewUser(@ModelAttribute @Valid DtoUserRegistration dto,
                                   BindingResult bindResult) {
         log.info("Dodanie nowego użytkownika {}", dto);
-        if (bindResult.hasErrors())
+        if (bindResult.hasErrors()) {
             return "registerForm";
-           // return "test";
-        else {
+            // return "test";
+        } else {
             User user = new User();
             user.setUserAccountName(dto.getUserAccountName());
             user.setCity(dto.getCity());

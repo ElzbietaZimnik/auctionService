@@ -3,23 +3,26 @@
 <head>
     <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8"></meta>
-    <title>Formularz do rejestracji użytkownika</title>
+    <title>Formularz do rejestracji nowego użytkownika</title>
 </head>
 <body>
 <div id="registerForm">
-<h1>Formularz do rejestracji</h1>
+<h1>Formularz do rejestracji nowego użytkownika</h1>
 <!--/*@thymesVar id="address" type=""*/-->
 <form action="#" method="post" th:action="@{/register}" th:object="${user}">
 
-    <tr>
-        <td>Nazwa konta użytkownika:</td>
-        <td><input type="text" th:field="*{userAccountName}" placeholder="Nazwa konta użytkownika" /></td>
-        <td th:if="${#fields.hasErrors('userAccountName')}" th:errors="*{userAccountName}">UserAccountName Error</td> <br>
-    </tr>
+<!--    <tr>-->
+<!--        <td>Nazwa konta użytkownika:</td>-->
+<!--        <td><input type="text" th:field="*{userAccountName}" placeholder="Nazwa konta użytkownika" /></td>-->
+<!--        <td th:if="${#fields.hasErrors('userAccountName')}" th:errors="*{userAccountName}">To pole musi zawierać min 3 znaki</td> <br>-->
+<!--    </tr>-->
+
+    <label > Nazwa konta użytkownika </label> <br>
+    <input th:field="*{userAccountName}" placeholder="Nazwa konta użytkownika" /><br />
 
 <!--    <label > Nazwa konta użytkownika </label> <br>-->
-<!--    <input th:field="*{userAccountName}" placeholder="Nazwa konta użytkownika" /><br />-->
-
+<!--    <td><input type="text" th:field="*{userAccountName}" placeholder="Nazwa konta użytkownika" /></td>-->
+<!--    <td th:if="${#fields.hasErrors('Nazwa konta użytkownika')}" th:errors="*{userAccountName}">To pole musi zawierać min 3 znaki</td> <br>-->
 
     <label > Miasto </label> <br>
     <input th:field="*{city}" placeholder="Miasto" /><br />
@@ -41,7 +44,7 @@
     <td th:if="${#fields.hasErrors('password')}" ></td> <p th:errors="*{password}">Password errors</p>
 
     <label > Password </label> <br>
-    <input th:field="*{password}" type="password" placeholder="Password" /><br />
+    <input th:field="*{password}" type="password" placeholder="Password" /><br /> <br>
 
     <input type="submit" value="Zarejestruj się" />
 
