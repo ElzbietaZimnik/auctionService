@@ -4,9 +4,9 @@ import com.aukcje.user.User;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -19,30 +19,26 @@ public class Address implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_address")
-    @NotNull
     private Long id;
 
     @Column
-    @NotEmpty
     private String street;
 
     @Column
-    @NotEmpty
-    private Long number;
+    private String number;
 
     @Column
-    @NotEmpty
-    private Integer cityCode;
+    private Long cityCode;
 
     @OneToMany(mappedBy = "address")
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
 
-    @Override
-    public String toString() {
-        return "User [id=" + id
-                + ", street=" + street
-                + ", number=" + number
-                + ", cityCode=" + cityCode
-                +"]";
-    }
+//    @Override
+//    public String toString() {
+//        return "User [id=" + id
+//                + ", street=" + street
+//                + ", number=" + number
+//                + ", cityCode=" + cityCode
+//                +"]";
+//    }
 }

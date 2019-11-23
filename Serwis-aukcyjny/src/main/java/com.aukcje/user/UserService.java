@@ -1,16 +1,17 @@
 package com.aukcje.user;
 
+import com.aukcje.address.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
+
 import java.util.List;
-import java.util.Set;
+
 
 @Service
 public class UserService {
 
-    Set<User> users = new HashSet<>();
+    //Set<User> users = new HashSet<>();
 
     private final UserRepository userRepository;
 
@@ -19,14 +20,15 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-
     public void add(User user) {
-        userRepository.save(user);
+        Address address = user.getAddress();
+        if (address != null) {
+            userRepository.save(user);
+        }
     }
 
-
     public List<User> getAllUsers() {
-       return userRepository.findAll();
+        return userRepository.findAll();
     }
 
 }

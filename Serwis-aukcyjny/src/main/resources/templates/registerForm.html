@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8"></meta>
-    <title>Formularz do rejestracji</title>
+    <title>Formularz do rejestracji użytkownika</title>
 </head>
 <body>
 <div id="registerForm">
@@ -11,22 +11,39 @@
 <!--/*@thymesVar id="address" type=""*/-->
 <form action="#" method="post" th:action="@{/register}" th:object="${user}">
 
-    <input th:field="*{userAccountName}" placeholder="Nazwa konta użytkownika" /><br />
+    <tr>
+        <td>Nazwa konta użytkownika:</td>
+        <td><input type="text" th:field="*{userAccountName}" placeholder="Nazwa konta użytkownika" /></td>
+        <td th:if="${#fields.hasErrors('userAccountName')}" th:errors="*{userAccountName}">UserAccountName Error</td> <br>
+    </tr>
+
+<!--    <label > Nazwa konta użytkownika </label> <br>-->
+<!--    <input th:field="*{userAccountName}" placeholder="Nazwa konta użytkownika" /><br />-->
+
+
+    <label > Miasto </label> <br>
     <input th:field="*{city}" placeholder="Miasto" /><br />
+    <label > Województwo </label> <br>
     <input th:field="*{region}" placeholder="Województwo" /><br />
 
+    <label > Ulica </label> <br>
+    <input th:field="*{street}" placeholder="Ulica" /><br />
+    <label > Numer domu </label> <br>
+    <input th:field="*{number}" placeholder="Numer domu" /><br />
+    <label > Kod pocztowy </label> <br>
+    <input th:field="*{cityCode}" placeholder="Kod pocztowy" /><br />
 
-    <input th:field="*{address.street}" placeholder="Ulica" /><br />
-    <input th:field="*{address.number}" placeholder="Numer domu" /><br />
-    <input th:field="*{address.cityCode}" placeholder="Kod pocztowy" /><br />
 
     <p th:errors="*{loginByEmail}">Email errors</p>
+    <label > E-mail </label> <br>
     <input th:field="*{loginByEmail}" type="email" placeholder="e-mail" /><br />
-    <p th:errors="*{password}">Password errors</p>
+
+    <td th:if="${#fields.hasErrors('password')}" ></td> <p th:errors="*{password}">Password errors</p>
+
+    <label > Password </label> <br>
     <input th:field="*{password}" type="password" placeholder="Password" /><br />
 
-
-    <input type="submit" value="Zarejestruj" />
+    <input type="submit" value="Zarejestruj się" />
 
 </form>
 </div>

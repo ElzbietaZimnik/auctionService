@@ -7,7 +7,6 @@ import lombok.Data;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 @Data
@@ -17,29 +16,24 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "id_user")
-    @NotNull
     private Long id;
 
     @Column(unique=true)
-    @NotEmpty
     public String userAccountName;
 
     @Column
-    @NotEmpty
     private String city;
 
     @Column
-    @NotEmpty
     private String region;
 
     @Column(unique=true)
-    @NotEmpty
     @NotNull
     private String loginByEmail;
 
     @Column
-    @NotEmpty
     private String password;
 
     @Enumerated(EnumType.STRING)
@@ -48,7 +42,7 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private AccountType type;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
 
@@ -61,7 +55,7 @@ public class User implements Serializable {
                 + ", city=" + city
                 + ", region=" + region
                 + ", email=" + loginByEmail
-                + ", password=" + password
+                + ", password=" + "***************"
                 + ", street=" + address.getStreet()
                 + ", number=" + address.getNumber()
                 + ", cityCode=" + address.getCityCode()
