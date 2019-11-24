@@ -74,6 +74,11 @@ public class UserController {
             userService.add(user);
             return "registerSuccsess";
         }
+
+//        User existing = userService.findByUserAccountName(dto.getUserAccountName());
+//        if (existing != null){
+//            bindResult.rejectValue("email", null, "Już istnieje konto o podanej nazwie użytkownika");
+//        }
     }
 
     //Model and Viev

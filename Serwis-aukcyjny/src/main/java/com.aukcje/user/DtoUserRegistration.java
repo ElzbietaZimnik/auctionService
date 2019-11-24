@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 @Data
 public class DtoUserRegistration {
     @NotEmpty (message = "To pole nie może byc puste")
-    @Size(min = 3)
+    @Size(min = 3, max = 15)
     private String userAccountName;
 
     @NotEmpty

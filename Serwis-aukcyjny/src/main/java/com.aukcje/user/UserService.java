@@ -31,4 +31,11 @@ public class UserService {
         return userRepository.findAll();
     }
 
-}
+//    public User findByEmail(String loginByEmail) {
+//        return userRepository.findAll();
+//    }
+//
+//
+//    public User findByUserAccountName(String userAccountName){
+//        return userRepository.findBy(userAccountName);
+    }
