@@ -9,6 +9,8 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Set;
+
 @Data
 @Entity
 @Table
@@ -16,8 +18,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    @Column(name = "id_user")
+    @Column
     private Long id;
 
     @Column(unique=true)
@@ -42,11 +43,17 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private AccountType type;
 
+    //private LocalDateTime dateCreateAccount;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
 
-    //private LocalDateTime dateCreateAccount;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+                                    inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+   private Set<Role> roles;
 
     @Override
     public String toString() {

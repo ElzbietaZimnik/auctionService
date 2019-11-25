@@ -1,7 +1,6 @@
 package com.aukcje.user;
 
 import com.aukcje.address.Address;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -45,7 +45,7 @@ public class UserController {
         return "registerForm";
     }
 
-    @ModelAttribute("user")
+    @ModelAttribute("dtoUserRegistration")
     public DtoUserRegistration dtoUserRegistration() {
         return new DtoUserRegistration();
     }
@@ -54,6 +54,11 @@ public class UserController {
     public String registryNewUser(@ModelAttribute @Valid DtoUserRegistration dto,
                                   BindingResult bindResult) {
         log.info("Dodanie nowego użytkownika {}", dto);
+
+        User existing = userService.findByUserAccountName(dto.getUserAccountName());
+        if (existing != null) {
+            bindResult.rejectValue("userAccountName", null, "Konto o podanej nazwie użytkownika już istnieje");
+        }
         if (bindResult.hasErrors()) {
             return "registerForm";
             // return "test";
@@ -64,21 +69,14 @@ public class UserController {
             user.setLoginByEmail(dto.getLoginByEmail());
             user.setRegion(dto.getRegion());
             user.setPassword(dto.getPassword());
-
             Address address = new Address();
             address.setStreet(dto.getStreet());
             address.setNumber(dto.getNumber());
             address.setCityCode(dto.getCityCode());
             user.setAddress(address);
-
             userService.add(user);
             return "registerSuccsess";
         }
-
-//        User existing = userService.findByUserAccountName(dto.getUserAccountName());
-//        if (existing != null){
-//            bindResult.rejectValue("email", null, "Już istnieje konto o podanej nazwie użytkownika");
-//        }
     }
 
     //Model and Viev
@@ -90,10 +88,37 @@ public class UserController {
         return modelAndView;
     }
 
+//    @GetMapping("/login")
+//    public String login(Model model, String error, String logout) {
+//        if (error != null)
+//            model.addAttribute("error", "Your username and password is invalid.");
+//
+//        if (logout != null)
+//            model.addAttribute("message", "You have been logged out successfully.");
+//
+//        return "loginForm";
+//    }
+//
+//    @ModelAttribute("login")
+//    public DtoUserRegistration dtoUserLogowanie() {
+//        return new DtoUserRegistration();
+//    }
 
-    @GetMapping("/login")
-    public String login() {
-        log.info("Logujemy nowego uzytkownika");
-        return "login";
+    @PostMapping("/login")
+    public String loginProcess(@ModelAttribute User user) {
+        return "loginForm";
     }
+
+//
+//    @RequestMapping(value = "login", method = RequestMethod.GET)
+//    public String show(Model m,
+//                       HttpServletRequest request,
+//                       @RequestParam(value = "error", required = false) String error) {
+//        if (error != null) {
+//            m.addAttribute("error", "bledne dane logowania");
+//        }
+//        return "login";
+//    }
+
+
 }

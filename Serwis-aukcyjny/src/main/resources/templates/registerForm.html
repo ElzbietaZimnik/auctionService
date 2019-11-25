@@ -9,41 +9,34 @@
 <div id="registerForm">
 <h1>Formularz do rejestracji nowego użytkownika</h1>
 <!--/*@thymesVar id="address" type=""*/-->
-<form action="#" method="post" th:action="@{/register}" th:object="${user}">
+<form action="#" method="post" th:action="@{/register}" th:object="${dtoUserRegistration}">
 
-<!--    <tr>-->
-<!--        <td>Nazwa konta użytkownika:</td>-->
-<!--        <td><input type="text" th:field="*{userAccountName}" placeholder="Nazwa konta użytkownika" /></td>-->
-<!--        <td th:if="${#fields.hasErrors('userAccountName')}" th:errors="*{userAccountName}">To pole musi zawierać min 3 znaki</td> <br>-->
-<!--    </tr>-->
 
     <label > Nazwa konta użytkownika </label> <br>
-    <input th:field="*{userAccountName}" placeholder="Nazwa konta użytkownika" /><br />
-
-
-
-<!--    <label > Nazwa konta użytkownika </label> <br>-->
-<!--    <td><input type="text" th:field="*{userAccountName}" placeholder="Nazwa konta użytkownika" /></td>-->
-<!--    <td th:if="${#fields.hasErrors('Nazwa konta użytkownika')}" th:errors="*{userAccountName}">To pole musi zawierać min 3 znaki</td> <br>-->
+    <td><input type="text" th:field="*{userAccountName}" placeholder="Nazwa konta użytkownika" /></td> <br>
+    <td th:if="${#fields.hasErrors('userAccountName')}" th:errors="*{userAccountName}">userAccountName Error</td> <br> <br>
 
     <label > Miasto </label> <br>
     <input th:field="*{city}" placeholder="Miasto" /><br />
+
     <label > Województwo </label> <br>
     <input th:field="*{region}" placeholder="Województwo" /><br />
 
     <label > Ulica </label> <br>
     <input th:field="*{street}" placeholder="Ulica" /><br />
+
     <label > Numer domu </label> <br>
     <input th:field="*{number}" placeholder="Numer domu" /><br />
-    <label > Kod pocztowy </label> <br>
-    <input th:field="*{cityCode}" placeholder="Kod pocztowy" /><br />
 
+<!--    <label > Kod pocztowy </label> <br>-->
+<!--    <input th:field="*{cityCode}" placeholder="Kod pocztowy" /><br />-->
+<!--    <form action="" name="form" method="post">-->
+        <label>Kod pocztowy</label> <br>
+        <input type="kod_pocztowy" pattern="^[0-9]{2}-[0-9]{3}$" placeholder=" __-___" /><br />
 
-    <p th:errors="*{loginByEmail}">Email errors</p>
     <label > E-mail </label> <br>
     <input th:field="*{loginByEmail}" type="email" placeholder="e-mail" /><br />
-
-    <td th:if="${#fields.hasErrors('password')}" ></td> <p th:errors="*{password}">Password errors</p>
+    <td th:if="${#fields.hasErrors('loginByEmail')}" th:errors="*{loginByEmail}">LoginByEmail Error</td> <br> <br>
 
     <label > Password </label> <br>
     <input th:field="*{password}" type="password" placeholder="Password" /><br /> <br>

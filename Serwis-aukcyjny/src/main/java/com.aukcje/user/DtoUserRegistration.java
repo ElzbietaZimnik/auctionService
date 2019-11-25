@@ -1,6 +1,5 @@
 package com.aukcje.user;
 
-import com.aukcje.address.Address;
 import lombok.Data;
 
 import javax.validation.constraints.Email;
@@ -10,8 +9,9 @@ import javax.validation.constraints.Size;
 
 @Data
 public class DtoUserRegistration {
+
     @NotEmpty (message = "To pole nie może byc puste")
-    @Size(min = 3, max = 15)
+    @Size(min = 3, max = 15, message = "Pole musi zawierać min 3 znaki i max 15")
     private String userAccountName;
 
     @NotEmpty
@@ -24,16 +24,16 @@ public class DtoUserRegistration {
     @Email
     private String loginByEmail;
 
-    @NotEmpty
+    @NotEmpty(message = "To pole nie może byc puste")
     private String password;
 
-    @NotEmpty
+    @NotEmpty(message = "To pole nie może byc puste")
     private String street;
 
-    @NotEmpty
+    @NotEmpty(message = "To pole nie może byc puste")
     private String number;
 
-
+   // @NotEmpty(message = "To pole nie może byc puste")
     private Long cityCode;
 
 }

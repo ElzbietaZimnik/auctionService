@@ -7,7 +7,8 @@
 <title>Logowanie</title>
 <body>
 <div id="loginForm">
-<form th:action="@{/login}" method="post">
+
+    <form action="#" method="post" th:action="@{/login}" th:object="${dtoUserRegistration}">
 
     <div>
         <label> Nazwa użytkownika </label> <br>
