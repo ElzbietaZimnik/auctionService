@@ -25,14 +25,12 @@ public class UserService {
         this.roleRepository = roleRepository;
     }
 
-
     public void add(User user) {
         Address address = user.getAddress();
         if (address != null) {
             userRepository.save(user);
         }
     }
-
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
