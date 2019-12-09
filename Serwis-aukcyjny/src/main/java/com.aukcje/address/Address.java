@@ -28,7 +28,7 @@ public class Address implements Serializable {
     private String number;
 
     @Column
-    private Long cityCode;
+    private String cityCode;
 
     @OneToMany(mappedBy = "address")
     private List<User> users = new ArrayList<>();

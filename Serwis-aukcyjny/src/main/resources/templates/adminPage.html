@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <title>Panel ADMINA</title>
+</head>
+<body>
+
+<h2>Panel ADMINA</h2>
+<h3>WITAJ :
+    <span th:utext="${#request.userPrincipal.name}"></span>
+</h3>
+
+
+<br/><br/>
+
+<!--<div th:if="${userInfo != null}" th:utext="${userInfo}"></div>-->
+<b>To jest chroniona strona</b>
+</body>
+</html>

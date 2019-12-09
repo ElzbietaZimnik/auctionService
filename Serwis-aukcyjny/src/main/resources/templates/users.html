@@ -4,19 +4,43 @@
 <head>
     <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8">
-    <title>List Cars</title>
+    <title>Lista użytkowników</title>
 </head>
 <body>
+<h3>Lista użytkowników<br>Niedługo będzie widoczna tylko dla admina</h3>
 
-<h3>Lista użytkowników</h3>
+<!--<ol>-->
+<!--    <li th:each="user:${user}" th:text="${user}"></li>-->
+<!--</ol>-->
 
-<tr th:each="user:${user}"><br>
-    <td th:text="${user.id}">ID</td>
-    <td th:text="${user.userAccountName}">Nazwa użytkownika</td>
-    <td th:text="${user.loginByEmail}">Login</td>
-    <td th:text="${user.city}">Miasto</td>
-    <td th:text="${user.region}">Region</td>
-</tr>
 
+<table>
+    <thead>
+    <tr>
+        <th> Id </th>
+        <th> Nazwa użytkownika </th>
+        <th> Login(e-mail) </th>
+        <th> Miasto </th>
+        <th> Region </th>
+        <th> Data utworzenia konta </th>
+        <th> Usuwanie </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user:${user}"><br>
+        <td th:text="${user.id}" > Id </td>
+        <td th:text="${user.userAccountName}"> Nazwa użytkownika </td>
+        <td th:text="${user.loginByEmail}"> Login(e-mail) </td>
+        <td th:text="${user.city}"> Miasto </td>
+        <td th:text="${user.region}"> Region </td>
+        <td th:text="${user.accountCreationDate}"> Data utworzenia konta </td>
+        <td>
+            <form action="#" th:action="@{/user/delete/{id}(id=${user.id})}" method="post"> usun
+            <button type="submit"> Usuń </button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

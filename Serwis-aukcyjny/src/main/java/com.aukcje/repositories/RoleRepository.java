@@ -1,9 +1,9 @@
-package com.aukcje.user;
+package com.aukcje.repositories;
 
+import com.aukcje.role.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
-    Role findByRole(String defaultRole);
+
+    Role findByRole(String role);
 }

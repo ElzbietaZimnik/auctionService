@@ -1,10 +1,15 @@
-package com.aukcje.user;
+package com.aukcje.role;
+
+import com.aukcje.user.User;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
-@Table(name = "role")
+@Data
+@Table(name = "roles")
 public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -14,9 +19,11 @@ public class Role implements Serializable {
     @Column
     private Long id;
     @Column
-    private String name;
+    private String role;
     @Column
     private String description;
 
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 
 }

@@ -3,13 +3,13 @@
 <!--<head th:include="_others :: head" />-->
 
 <link rel="stylesheet" href="style.css" />
-<meta charset="UTF-8"></meta>
+<meta charset="UTF-8">
 <title>Logowanie</title>
 <body>
 <div id="loginForm">
 
-    <form action="#" method="post" th:action="@{/login}" th:object="${dtoUserRegistration}">
-
+    <h3>Wprowadź nazwę i hasło</h3>
+    <form name='f' th:action="@{/login}" method='POST'>
     <div>
         <label> Nazwa użytkownika </label> <br>
         <input type="text" name="usersAccountName" /> <br> <br>

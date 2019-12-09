@@ -1,49 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css"/>
     <meta charset="UTF-8"></meta>
     <title>Formularz do rejestracji nowego użytkownika</title>
 </head>
 <body>
 <div id="registerForm">
-<h1>Formularz do rejestracji nowego użytkownika</h1>
-<!--/*@thymesVar id="address" type=""*/-->
-<form action="#" method="post" th:action="@{/register}" th:object="${dtoUserRegistration}">
+    <h1>Formularz do rejestracji nowego użytkownika</h1>
+    <!--/*@thymesVar id="address" type=""*/-->
+    <form action="#" method="post" th:action="@{/register}" th:object="${dtoUserRegistration}">
 
 
-    <label > Nazwa konta użytkownika </label> <br>
-    <td><input type="text" th:field="*{userAccountName}" placeholder="Nazwa konta użytkownika" /></td> <br>
-    <td th:if="${#fields.hasErrors('userAccountName')}" th:errors="*{userAccountName}">userAccountName Error</td> <br> <br>
+        <label> Nazwa konta użytkownika </label> <br>
+        <td><input type="text" th:field="*{userAccountName}" placeholder="Nazwa konta użytkownika"/></td>
+        <br>
+        <small>Pole musi zawierać min 3 znaki i max 15</small> <br> <br>
+        <td th:if="${#fields.hasErrors('userAccountName')}" th:errors="*{userAccountName}">userAccountName Error</td>
+        <br> <br>
 
-    <label > Miasto </label> <br>
-    <input th:field="*{city}" placeholder="Miasto" /><br />
+        <label> Miasto </label> <br>
+        <input th:field="*{city}" placeholder="Miasto"/><br/>
 
-    <label > Województwo </label> <br>
-    <input th:field="*{region}" placeholder="Województwo" /><br />
+        <label> Województwo </label> <br>
+        <input th:field="*{region}" placeholder="Województwo"/><br/>
 
-    <label > Ulica </label> <br>
-    <input th:field="*{street}" placeholder="Ulica" /><br />
+        <label> Ulica </label> <br>
+        <input th:field="*{street}" placeholder="Ulica"/><br/>
 
-    <label > Numer domu </label> <br>
-    <input th:field="*{number}" placeholder="Numer domu" /><br />
+        <label> Numer domu </label> <br>
+        <input th:field="*{number}" placeholder="Numer domu"/><br/>
 
-<!--    <label > Kod pocztowy </label> <br>-->
-<!--    <input th:field="*{cityCode}" placeholder="Kod pocztowy" /><br />-->
-<!--    <form action="" name="form" method="post">-->
         <label>Kod pocztowy</label> <br>
-        <input type="kod_pocztowy" pattern="^[0-9]{2}-[0-9]{3}$" placeholder=" __-___" /><br />
+        <input th:field="*{cityCode}" pattern="^[0-9]{2}-[0-9]{3}$" type="text" placeholder="Kod pocztowy"  /><br />
+        <small>Format: 12-345</small> <br> <br>
 
-    <label > E-mail </label> <br>
-    <input th:field="*{loginByEmail}" type="email" placeholder="e-mail" /><br />
-    <td th:if="${#fields.hasErrors('loginByEmail')}" th:errors="*{loginByEmail}">LoginByEmail Error</td> <br> <br>
+        <label> E-mail </label> <br>
+        <input th:field="*{loginByEmail}" type="email" placeholder="e-mail"/><br/>
+        <td th:if="${#fields.hasErrors('loginByEmail')}" th:errors="*{loginByEmail}">LoginByEmail Error</td>
+        <br> <br>
 
-    <label > Password </label> <br>
-    <input th:field="*{password}" type="password" placeholder="Password" /><br /> <br>
+        <label> Password </label> <br>
+        <input th:field="*{password}" type="password" placeholder="Password"/><br/> <br>
 
-    <input type="submit" value="Zarejestruj się" />
+        <input type="submit" value="Zarejestruj się"/>
 
-</form>
+    </form>
 </div>
 </body>
 </html>

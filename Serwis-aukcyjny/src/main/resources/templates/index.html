@@ -2,16 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="style.css" />
-    <meta charset="UTF-8"></meta>
-    <title>Homepage</title>
+    <meta charset="UTF-8">
+    <title>Strona główna</title>
 </head>
-
 <body>
 <div id="container">
 <h1>Witaj w serwisie aukcyjnym</h1>
-<a href="#" th:href="@{/register}">Zarejestruj się</a> <br> <br>
-<a href="#" th:href="@{/categories}">Kategorie</a>
-<a href="#" th:href="@{/login}">Zaloguj się</a><br> <br>
+<a href="#" th:href="@{/register}" >Zarejestruj się</a> <br> <br>
+<a href="#" th:href="@{/categories}" >Kategorie</a> <br> <br>
+<a href="#" th:href="@{/login}" >Zaloguj się</a><br> <br>
+<a href="#" th:href="@{/admin}" >Admin</a><br> <br>
+<a href="#" th:href="@{/userInfo}" >UserInfo</a><br> <br>
+<a href="#" th:href="@{/usersList}" >Lista użytkowników</a><br> <br>
+<a href="#" th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a><br> <br>
+    <img src="aukcja.jpg"/>
 </div>
 </body>
 </html>

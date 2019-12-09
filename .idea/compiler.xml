@@ -9,7 +9,7 @@
         <module name="Serwis-aukcyjny" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="11">
       <module name="Serwis-aukcyjny" target="11" />
     </bytecodeTargetLevel>
   </component>
